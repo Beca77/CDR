@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fale Conosco - Centro de Desenvolvimento Regional</title>
+    <title>Login - Centro de Desenvolvimento Regional</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,8 +18,9 @@
             <div class="bar"></div>
         </div>
         <div class="logo">
-            <img src="/assets/logo.png" alt="Logo do Centro de Desenvolvimento Regional">
+            <img src="/assets/logo.png" alt="Logo do Centro de Desenvolvimento Regional"> 
             <div class="logo-text">
+                
             </div>
         </div>
     </header>
@@ -32,45 +33,29 @@
             </svg>
         </div>
         <ul>
-            <li><a href="../Login/login.html" class="menu-button">Login</a></li>
+            <li><span class="menu-button active">Login</span></li>
             <li><a href="../Tela inicial/index.html" class="menu-button">Home</a></li>
             <li><a href="../Blog/blog.html" class="menu-button">Blog</a></li>
             <li><a href="#" class="menu-button">Projetos</a></li>
             <li><a href="#" class="menu-button">Legislação</a></li>
-            <li><span class="menu-button active">Contato</span></li>
+            <li><a href="../Fale Conosco/faleconosco.html" class="menu-button">Contato</a></li>
         </ul>
     </nav>
 
-    <main class="contact-content">
-        <div class="contact-info-card">
-            <h2>Informações de Contato</h2>
-            <p><strong>Endereço:</strong></p>
-            <p>Alameda Madrid, 545 — Jardim Sevilha,</p>
-            <p>Gurupi — TO</p>
-            <p>CEP: 77410-470</p>
-            <br>
-            <p><strong>E-mail:</strong></p>
-            <p><a href="mailto:cdrsultocantins@ifto.edu.br">edrsultocantins@unirg.edu.br</a></p>
-            <br>
-            <p>Preencha o formulário ao lado e entraremos em contato em breve.</p>
-        </div>
-
-        <div class="send-message-card">
-            <h2>Envie sua mensagem</h2>
-            <form>
+    <main class="login-content">
+        <div class="login-card">
+            <h2>Acesso ao Sistema</h2>
+            <form action="#" method="POST">
                 <div class="input-group">
-                    <input type="text" id="nome" name="nome" placeholder="Nome completo" required>
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="email" required>
                 </div>
                 <div class="input-group">
-                    <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+                    <label for="password">Senha</label>
+                    <input type="password" id="password" name="password" required>
                 </div>
-                <div class="input-group">
-                    <input type="tel" id="telefone" name="telefone" placeholder="(99) 9 9999-9999">
-                </div>
-                <div class="input-group">
-                    <textarea id="mensagem" name="mensagem" placeholder="Digite sua mensagem..." rows="5" required></textarea>
-                </div>
-                <button type="submit" class="submit-button">Enviar</button>
+                <button type="submit" class="submit-button">Entrar</button>
+                <a href="#" class="forgot-password">Esqueceu a senha?</a>
             </form>
         </div>
     </main>

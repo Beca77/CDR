@@ -1,0 +1,445 @@
+/* Definições de Cores */
+:root {
+    --dark-green: #000000; /* Preto para o fundo */
+    --light-green: #38b056; /* Verde dos destaques */
+    --white: #ffffff;
+    --dark-grey: #1a1a1a; /* Um cinza escuro para os cards de contato */
+}
+
+/* Reset Básico */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilo do Body e Fonte */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--dark-green);
+    color: var(--white);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-size: 14px;
+}
+
+/* HEADER e Menu Hambúrguer */
+.header {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background-color: transparent;
+    position: relative;
+    z-index: 1;
+    padding-left: 100px; /* Espaço para o destaque verde */
+}
+
+/* Destaque Verde (Bolinha) no Canto */
+.header::before {
+    content: '';
+    position: absolute;
+    top: -30; /* Ajuste conforme necessário para o posicionamento vertical */
+    left: 87px; /* Ajuste para mover o círculo para fora da tela e centralizá-lo */
+    width: 50px; /* Largura do círculo */
+    height: 50px; /* Altura do círculo */
+    background-color: var(--light-green);
+    border-radius: 50%;
+    z-index: -1;
+}
+
+.menu-icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 25px;
+    height: 18px;
+    cursor: pointer;
+    margin-right: 20px;
+    position: relative;
+    z-index: 2; /* Garante que o ícone fique sobre a bolinha verde */
+}
+
+.bar {
+    width: 100%;
+    height: 2px;
+    background-color: var(--white);
+    border-radius: 1px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    width: 240px;
+    height: auto;
+    margin-right: 15px;
+}
+
+.logo-text {
+    font-size: 0.7rem;
+    line-height: 1.1;
+    font-weight: 400;
+}
+
+/* CONTEÚDO PRINCIPAL (HOME PAGE) */
+.content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 40px;
+    flex-grow: 1;
+    gap: 50px;
+}
+
+.text-container {
+    max-width: 500px;
+}
+
+.text-container h1 {
+    font-size: 2rem; /* Fonte do título principal */
+    color: var(--light-green);
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.text-container p {
+    font-size: 0.9rem; /* Fonte do parágrafo principal */
+    line-height: 1.6;
+    font-weight: 400;
+}
+
+.image-container {
+    width: 450px;
+    height: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.image-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, var(--light-green) 50%, transparent 50%);
+    background-size: 150%;
+    background-position: center;
+    border-radius: 50%;
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    clip-path: circle(50% at center);
+}
+
+/* MENU SUSPENSO */
+.side-menu {
+    position: fixed;
+    top: 0;
+    left: -200px;
+    width: 200px;
+    height: 100%;
+    background-color: var(--dark-green);
+    border: 2px solid var(--light-green);
+    transition: left 0.3s ease;
+    z-index: 1000;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.side-menu.active {
+    left: 0;
+}
+
+.close-menu {
+    align-self: flex-start;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.close-menu svg {
+    color: var(--light-green);
+    width: 35px;
+    height: 35px;
+}
+
+.side-menu ul {
+    list-style: none;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.side-menu li {
+    width: 100%;
+}
+
+.menu-button {
+    display: block;
+    width: 100%;
+    padding: 10px 20px;
+    text-align: center; /* Garante o alinhamento do texto 'Legislação' */
+    text-decoration: none;
+    color: var(--light-green);
+    font-size: 1.2rem; /* Tamanho da fonte dos botões */
+    font-weight: 600;
+    border: 2px solid var(--light-green);
+    border-radius: 50px;
+    transition: all 0.2s ease;
+}
+
+.menu-button:hover {
+    background-color: var(--light-green);
+    color: var(--dark-green);
+}
+
+.menu-button.active {
+    opacity: 0.5;
+    cursor: default;
+    background-color: transparent;
+}
+
+.menu-button.active:hover {
+    background-color: transparent;
+    color: var(--light-green);
+}
+
+/* PÁGINA FALE CONOSCO (Contact Content) */
+.contact-content {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 40px;
+    padding: 40px 20px;
+    flex-wrap: wrap;
+    flex-grow: 1;
+}
+
+.contact-info-card,
+.send-message-card {
+    background-color: var(--dark-grey);
+    border: 2px solid var(--light-green);
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    color: var(--white);
+    max-width: 550px;
+    flex: 1;
+    min-width: 300px;
+}
+
+.contact-info-card h2,
+.send-message-card h2 {
+    color: var(--light-green);
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+    font-weight: 600;
+}
+
+.contact-info-card p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 5px;
+}
+
+.contact-info-card a {
+    color: var(--light-green);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.contact-info-card a:hover {
+    text-decoration: underline;
+}
+
+/* Formulário */
+.send-message-card form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.input-group input,
+.input-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--light-green);
+    background-color: transparent;
+    color: var(--white);
+    border-radius: 8px;
+    font-size: 1rem;
+    outline: none;
+}
+
+.input-group input:focus,
+.input-group textarea:focus {
+    border-color: var(--white);
+}
+
+.submit-button {
+    background-color: var(--light-green);
+    color: var(--dark-green);
+    border: none;
+    padding: 12px 25px;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    align-self: flex-end;
+}
+
+.submit-button:hover {
+    background-color: #2e9447;
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 1024px) {
+    .content {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+    }
+    .image-container {
+        width: 300px;
+        height: 300px;
+    }
+    .image-container::before {
+        display: none;
+    }
+    .contact-content {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .logo {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .logo img {
+        width: 45px;
+    }
+    .logo-text {
+        font-size: 0.6rem;
+    }
+    .text-container h1 {
+        font-size: 1.8rem;
+    }
+    .contact-info-card,
+    .send-message-card {
+        min-width: auto;
+        max-width: 100%;
+    }
+    .submit-button {
+        align-self: stretch;
+    }
+}
+
+/* --- ESTILOS DA PÁGINA DE LOGIN --- */
+
+.login-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1; /* Garante que ocupe o espaço restante para centralizar */
+    padding: 40px 20px;
+    /* Se o cabeçalho for fixo e estiver atrapalhando a centralização, pode adicionar: */
+    /* min-height: calc(100vh - 80px); */ /* Ajuste 80px para a altura real do seu cabeçalho se necessário */
+}
+.login-card .submit-button {
+    width: 100%; /* Faz o botão ocupar a largura total do card */
+    margin-top: 10px;
+    /* Adicione text-align: center; se for necessário, mas geralmente não é para botões */
+}
+.login-card {
+    background-color: var(--dark-grey);
+    border: 2px solid var(--light-green);
+    border-radius: 15px;
+    padding: 40px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+}
+
+.login-card h2 {
+    color: var(--light-green);
+    font-size: 2rem;
+    margin-bottom: 40px; /* Mais espaço abaixo do título */
+    font-weight: 600;
+}
+
+.login-card form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px; /* Mais espaço entre os grupos de input */
+}
+
+.login-card .input-group {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+}
+
+.login-card label {
+    color: var(--white);
+    margin-bottom: 10px; /* Mais espaço entre o label e o input */
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.login-card input[type="email"],
+.login-card input[type="password"] {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #555555;
+    background-color: #3e3e3e;
+    color: var(--white);
+    border-radius: 4px;
+    font-size: 1rem;
+    outline: none;
+}
+
+.login-card input:focus {
+    border-color: var(--white);
+}
+
+.login-card .submit-button {
+    margin-top: 10px;
+}
+
+.forgot-password {
+    color: var(--light-green);
+    text-decoration: none;
+    font-size: 0.9rem;
+    margin-top: 30px; /* Mais espaço acima do link de esqueci a senha */
+    transition: color 0.2s;
+}
+
+.forgot-password:hover {
+    color: var(--white);
+    text-decoration: underline;
+}
+
+@media (max-width: 500px) {
+    .login-card {
+        padding: 30px 20px;
+    }
+}
