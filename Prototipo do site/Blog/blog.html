@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Centro de Desenvolvimento Regional</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="header">
+        <div class="menu-icon" id="menu-icon">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        <div class="logo">
+            <img src="/assets/logo.png" alt="Logo do Centro de Desenvolvimento Regional">
+        </div>
+    </header>
+
+    <nav class="side-menu">
+        <div class="close-menu" id="close-menu">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </div>
+        <ul>
+            <li><a href="#" class="menu-button">Login</a></li>
+            <li><a href="../Tela inicial/index.html" class="menu-button">Home</a></li> 
+            <li><span class="menu-button active">Blog</span></li>
+            <li><a href="#" class="menu-button">Projetos</a></li>
+            <li><a href="#" class="menu-button">Legislação</a></li>
+            <li><a href="../Fale Conosco/faleconosco.html" class="menu-button">Contato</a></li>        
+        </ul>
+    </nav>
+
+    <main class="blog-content">
+        <h1 class="blog-title">Blog</h1>
+        
+        <div class="blog-categories">
+            <button class="category-btn active" data-category="all">Todos</button>
+            <button class="category-btn" data-category="desenvolvimento">Desenvolvimento</button>
+            <button class="category-btn" data-category="sustentabilidade">Sustentabilidade</button>
+            <button class="category-btn" data-category="inovacao">Inovação</button>
+            <button class="category-btn" data-category="eventos">Eventos</button>
+        </div>
+        
+        <div class="posts-grid">
+            <!-- Post 1 -->
+            <article class="post-card" data-category="desenvolvimento">
+                <div class="post-image-placeholder"></div>
+                <div class="post-content">
+                    <span class="post-date">15 de Março, 2023</span>
+                    <h2 class="post-title">Novo projeto de desenvolvimento regional é lançado</h2>
+                    <p class="post-excerpt">O Centro de Desenvolvimento Regional Sul do Tocantins anuncia a criação de um novo projeto voltado para o fomento econômico da região...</p>
+                    <a href="post1.html" class="read-more">Leia mais</a>
+                </div>
+            </article>
+            
+            <!-- Post 2 -->
+            <article class="post-card" data-category="sustentabilidade">
+                <div class="post-image-placeholder"></div>
+                <div class="post-content">
+                    <span class="post-date">28 de Fevereiro, 2023</span>
+                    <h2 class="post-title">Workshop discute práticas sustentáveis na agricultura</h2>
+                    <p class="post-excerpt">Especialistas se reuniram para discutir e apresentar soluções inovadoras para uma agricultura mais sustentável na região sul do Tocantins...</p>
+                    <a href="post2.html" class="read-more">Leia mais</a>
+                </div>
+            </article>
+            
+            <!-- Post 3 -->
+            <article class="post-card" data-category="inovacao">
+                <div class="post-image-placeholder"></div>
+                <div class="post-content">
+                    <span class="post-date">10 de Fevereiro, 2023</span>
+                    <h2 class="post-title">Parceria com universidades fortalece pesquisa regional</h2>
+                    <p class="post-excerpt">O Centro firmou novas parcerias com instituições de ensino superior para impulsionar a pesquisa e inovação no desenvolvimento regional...</p>
+                    <a href="post3.html" class="read-more">Leia mais</a>
+                </div>
+            </article>
+            
+            <!-- Post 4 -->
+            <article class="post-card" data-category="desenvolvimento">
+                <div class="post-image-placeholder"></div>
+                <div class="post-content">
+                    <span class="post-date">25 de Janeiro, 2023</span>
+                    <h2 class="post-title">Resultados positivos dos projetos implementados em 2022</h2>
+                    <p class="post-excerpt">Relatório anual demonstra o impacto positivo dos projetos desenvolvidos pelo Centro na economia e qualidade de vida da região...</p>
+                    <a href="post4.html" class="read-more">Leia mais</a>
+                </div>
+            </article>
+            
+            <!-- Post 5 -->
+            <article class="post-card" data-category="inovacao">
+                <div class="post-image-placeholder"></div>
+                <div class="post-content">
+                    <span class="post-date">12 de Janeiro, 2023</span>
+                    <h2 class="post-title">Inovações tecnológicas transformam o agronegócio regional</h2>
+                    <p class="post-excerpt">Como a implementação de novas tecnologias está revolucionando o setor agrícola no sul do Tocantins e impulsionando a produtividade...</p>
+                    <a href="post5.html" class="read-more">Leia mais</a>
+                </div>
+            </article>
+            
+            <!-- Post 6 -->
+            <article class="post-card" data-category="eventos">
+                <div class="post-image-placeholder"></div>
+                <div class="post-content">
+                    <span class="post-date">05 de Janeiro, 2023</span>
+                    <h2 class="post-title">Evento reúne comunidade para discutir desenvolvimento local</h2>
+                    <p class="post-excerpt">Mais de 200 pessoas participaram do encontro que debateu as prioridades e estratégias para o desenvolvimento da região nos próximos anos...</p>
+                    <a href="post6.html" class="read-more">Leia mais</a>
+                </div>
+            </article>
+        </div>
+        
+        <div class="pagination">
+            <button class="page-btn active">1</button>
+            <button class="page-btn">2</button>
+            <button class="page-btn">3</button>
+            <button class="page-btn">→</button>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
