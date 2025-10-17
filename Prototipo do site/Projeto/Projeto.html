@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projetos - CDR Sul</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="menu-icon" id="menuToggle">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        <div class="logo">
+            <!-- Substitua pelo logo real do CDR Sul -->
+            <div style="width: 240px; height: 60px; background-color: #333; display: flex; align-items: center; justify-content: center; color: var(--light-green); font-weight: bold;">
+                CDR SUL
+            </div>
+        </div>
+    </header>
+
+    <!-- Menu Lateral -->
+    <nav class="side-menu" id="sideMenu">
+        <div class="close-menu" id="closeMenu">
+            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </div>
+        <ul>
+            <li><a href="index.html" class="menu-button">Início</a></li>
+            <li><a href="projetos.html" class="menu-button active">Projetos</a></li>
+            <li><a href="sobre.html" class="menu-button">Sobre</a></li>
+            <li><a href="equipe.html" class="menu-button">Equipe</a></li>
+            <li><a href="contato.html" class="menu-button">Contato</a></li>
+        </ul>
+    </nav>
+
+    <!-- Conteúdo Principal -->
+    <main class="main-content">
+        <div class="page-title">
+            <h1>Nossos Projetos</h1>
+            <p>Conheça as iniciativas desenvolvidas pelo CDR Sul para promover o desenvolvimento regional sustentável</p>
+        </div>
+
+        <!-- Filtros -->
+        <div class="filters">
+            <button class="filter-btn active" data-filter="all">Todos</button>
+            <button class="filter-btn" data-filter="agricultura">Agricultura</button>
+            <button class="filter-btn" data-filter="tecnologia">Tecnologia</button>
+            <button class="filter-btn" data-filter="sustentabilidade">Sustentabilidade</button>
+            <button class="filter-btn" data-filter="educacao">Educação</button>
+            <button class="filter-btn" data-filter="infraestrutura">Infraestrutura</button>
+        </div>
+
+        <!-- Grid de Projetos -->
+        <div class="projects-grid" id="projectsContainer">
+            <!-- Os projetos serão carregados aqui via JavaScript -->
+        </div>
+
+        <!-- Formulário de Cadastro (AGORA DEPOIS DOS PROJETOS) -->
+        <div class="form-container" id="projectForm">
+            <h2 class="form-title" id="formTitle">Cadastrar Novo Projeto</h2>
+            <form id="newProjectForm">
+                <input type="hidden" id="projectId">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="projectName">Nome do Projeto *</label>
+                        <input type="text" id="projectName" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="projectLocation">Localização *</label>
+                        <input type="text" id="projectLocation" class="form-control" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="projectStatus">Status *</label>
+                        <select id="projectStatus" class="form-control" required>
+                            <option value="">Selecione o status</option>
+                            <option value="ongoing">Em Andamento</option>
+                            <option value="completed">Concluído</option>
+                            <option value="planned">Planejado</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="projectDuration">Duração</label>
+                        <input type="text" id="projectDuration" class="form-control" placeholder="Ex: 12 meses">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="projectDescription">Descrição *</label>
+                    <textarea id="projectDescription" class="form-control" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="projectImage">URL da Imagem</label>
+                    <input type="text" id="projectImage" class="form-control" placeholder="https://exemplo.com/imagem.jpg">
+                </div>
+                
+                <div class="form-group">
+                    <label for="projectPartners">Parceiros</label>
+                    <input type="text" id="projectPartners" class="form-control" placeholder="Empresa A, Instituição B">
+                </div>
+                
+                <div class="form-group">
+                    <label>Categorias *</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="catAgricultura" value="agricultura">
+                            <label for="catAgricultura">Agricultura</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="catTecnologia" value="tecnologia">
+                            <label for="catTecnologia">Tecnologia</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="catSustentabilidade" value="sustentabilidade">
+                            <label for="catSustentabilidade">Sustentabilidade</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="catEducacao" value="educacao">
+                            <label for="catEducacao">Educação</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="catInfraestrutura" value="infraestrutura">
+                            <label for="catInfraestrutura">Infraestrutura</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="button" class="btn-cancel" id="cancelForm">Cancelar</button>
+                    <button type="submit" class="btn-submit" id="submitBtn">Cadastrar Projeto</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Botão para adicionar projeto NO FINAL DA PÁGINA -->
+        <div class="add-project-section">
+            <button class="add-project-btn" id="addProjectBtn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+                Cadastrar Novo Projeto
+            </button>
+        </div>
+    </main>
+
+    <!-- Modal de Detalhes do Projeto -->
+    <div class="modal" id="projectModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Título do Projeto</h2>
+                <button class="close-modal" id="closeModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-img">
+                    <img id="modalImage" src="" alt="Projeto">
+                </div>
+                <div class="modal-description" id="modalDescription">
+                    Descrição detalhada do projeto será exibida aqui.
+                </div>
+                <div class="modal-details">
+                    <div class="detail-item">
+                        <h4>Status</h4>
+                        <p id="modalStatus">-</p>
+                    </div>
+                    <div class="detail-item">
+                        <h4>Localização</h4>
+                        <p id="modalLocation">-</p>
+                    </div>
+                    <div class="detail-item">
+                        <h4>Duração</h4>
+                        <p id="modalDuration">-</p>
+                    </div>
+                    <div class="detail-item">
+                        <h4>Parceiros</h4>
+                        <p id="modalPartners">-</p>
+                    </div>
+                </div>
+                <div class="project-tags" id="modalTags"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-about">
+                <div class="footer-logo">CDR Sul</div>
+                <p>Desenvolvendo soluções inovadoras para o Sul do Brasil.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Links Rápidos</h4>
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="projetos.html">Projetos</a></li>
+                    <li><a href="sobre.html">Sobre</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Projetos</h4>
+                <ul>
+                    <li><a href="#">Agricultura 4.0</a></li>
+                    <li><a href="#">Laboratórios de Inovação</a></li>
+                    <li><a href="#">Energia Renovável</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Contato</h4>
+                <ul>
+                    <li><a href="mailto:contato@cdrsul.org">contato@cdrsul.org</a></li>
+                    <li><a href="tel:+5551999999999">(51) 99999-9999</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 CDR Sul. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
