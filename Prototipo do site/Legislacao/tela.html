@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centro de Desenvolvimento Regional - Editais Abertos</title>
+    <style>
+        :root {
+            --dark-green: #1e1f1e;
+            --light-green: #38b056;
+            --white: #ffffff;
+            --dark-grey: #1a1a1a;
+        }
+
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--dark-green);
+            color: var(--white);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+
+        body.menu-open {
+            overflow: hidden;
+        }
+
+
+        .header {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            background-color: transparent;
+            position: relative;
+            z-index: 1;
+        }
+
+
+        .menu-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+
+        .menu-icon {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 25px;
+            height: 18px;
+            cursor: pointer;
+            margin-right: 20px;
+        }
+
+
+        .menu-icon::before {
+            content: '';
+            position: absolute;
+            top: -16px;
+            left: -12px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--light-green);
+            border-radius: 50%;
+            z-index: -1;
+        }
+
+
+        .bar {
+            width: 100%;
+            height: 2px;
+            background-color: var(--white);
+            border-radius: 1px;
+        }
+
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+
+        .logo img {
+            width: 240px;
+            height: auto;
+            margin-right: 15px;
+        }
+
+
+        .logo-text {
+            font-size: 0.7rem;
+            line-height: 1.1;
+            font-weight: 400;
+        }
+
+
+        /* ======== MENU LATERAL ======== */
+        .side-menu {
+            position: fixed;
+            top: 0;
+            left: -200px;
+            width: 200px;
+            height: 100%;
+            background-color: var(--dark-green);
+            border: 2px solid var(--light-green);
+            transition: left 0.3s ease;
+            z-index: 1000;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+
+        .side-menu.active {
+            left: 0;
+        }
+
+
+        .close-menu {
+            align-self: flex-start;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+
+
+        .close-menu svg {
+            color: var(--light-green);
+            width: 35px;
+            height: 35px;
+        }
+
+
+        .side-menu ul {
+            list-style: none;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+
+
+        .side-menu li {
+            width: 100%;
+        }
+
+
+        .menu-button {
+            display: block;
+            width: 100%;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            color: var(--light-green);
+            font-size: 1.2rem;
+            font-weight: 600;
+            border: 2px solid var(--light-green);
+            border-radius: 50px;
+            transition: all 0.2s ease;
+        }
+
+
+        .menu-button:hover {
+            background-color: var(--light-green);
+            color: var(--dark-green);
+        }
+
+        .menu-button.active {
+            background-color: rgba(0, 0, 0, 0.6); /* fundo escuro translúcido */
+            color: var(--light-green);            /* texto verde */
+            border: 2px solid var(--light-green); /* mantém a borda verde */
+            cursor: default;
+            box-shadow: inset 0 0 8px rgba(56, 176, 86, 0.2); /*leve brilho interno */
+            transition: all 0.3s ease;
+        }
+
+
+        .menu-button.active:hover {
+            background-color: rgba(0, 0, 0, 0.6);
+            color: var(--light-green);
+        }
+
+
+        /* ======== SEÇÃO DE EDITAIS ======== */
+        .editais-section {
+            margin-top: 60px;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+
+        .carousel {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin: 0 auto;
+            max-width: 1100px;
+        }
+
+
+        .cards {
+            display: flex;
+            gap: 25px;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            scrollbar-width: none;
+            padding: 10px 0;
+        }
+
+
+        .cards::-webkit-scrollbar {
+            display: none;
+        }
+
+
+        .card {
+            background-color: #1b1f1e;
+            border-radius: 20px;
+            padding: 25px;
+            flex: 0 0 450px;
+            box-shadow: 0px 0px 15px rgba(0,0,0,0.4);
+            transition: 0.3s;
+            display: flex;
+            flex-direction: column;
+            min-height: 460px;
+        }
+
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 0px 25px rgba(56, 176, 86, 0.3);
+        }
+
+
+        .card-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+
+        .card h3 {
+            color: var(--light-green);
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 1.3rem;
+            line-height: 1.3;
+            font-weight: 600;
+            padding: 0 10px;
+            min-height: 56px;
+            display: block;
+        }
+
+
+        .card p {
+            margin-bottom: 20px;
+            flex: 1;
+            text-align: center;
+            line-height: 1.6;
+            font-size: 1rem;
+            padding: 0 15px;
+            min-height: 110px;
+        }
+
+
+        .info-container {
+            margin-top: auto;
+            padding-top: 15px;
+            text-align: center;
+        }
+
+
+        .info {
+            color: var(--light-green);
+            font-size: 14px;
+            line-height: 1.5;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+
+        .info-line {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+
+        .card button, .card a.button-link, .button-link {
+            background-color: transparent;
+            border: 1px solid var(--light-green);
+            color: var(--light-green);
+            border-radius: 25px;
+            padding: 10px 25px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-family: "Poppins", Arial, sans-serif;
+            font-size: 14px;
+            margin: 15px auto 0;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: 500;
+            width: fit-content;
+            text-align: center;
+        }
+
+
+        .card button:hover, .card a.button-link:hover, .button-link:hover {
+            background-color: var(--light-green);
+            color: var(--dark-green);
+        }
+
+
+        .arrow {
+            font-size: 35px;
+            cursor: pointer;
+            color: var(--light-green);
+            user-select: none;
+        }
+
+
+        /* ======== SEÇÃO DE STARTUPS ======== */
+        .startups-section {
+            margin-top: 60px;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+
+        .startup-cards {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+
+        .startup {
+            background-color: #1b1f1e;
+            border-radius: 20px;
+            width: 260px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 0 15px rgba(0,0,0,0.4);
+            transition: 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+
+        .startup:hover {
+            transform: scale(1.03);
+            box-shadow: 0px 0px 20px rgba(56, 176, 86, 0.25);
+        }
+
+
+        .circle {
+            background-color: var(--light-green);
+            color: var(--dark-green);
+            font-weight: bold;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-size: 18px;
+        }
+
+
+        .startup p {
+            text-align: center;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            flex: 1;
+        }
+
+
+        .startup button, .startup a.button-link {
+            background-color: transparent;
+            border: 1px solid var(--light-green);
+            color: var(--light-green);
+            border-radius: 25px;
+            padding: 8px 20px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-family: "Poppins", Arial, sans-serif;
+            font-size: 14px;
+            margin-top: auto;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+
+        .startup button:hover, .startup a.button-link:hover {
+            background-color: var(--light-green);
+            color: var(--dark-green);
+        }
+
+
+        footer {
+            background-color: #202524;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 40px;
+            color: #ccc;
+            font-size: 13px;
+            margin-top: 60px;
+        }
+
+
+        footer .left {
+            font-weight: 600;
+            color: var(--white);
+        }
+
+
+        footer .center a {
+            color: #ccc;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+
+        footer .center a:hover {
+            text-decoration: underline;
+        }
+
+
+        footer .right {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+
+        .system-btn {
+            background-color: #aaa;
+            color: #000;
+            border: none;
+            border-radius: 20px;
+            padding: 6px 18px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+
+        .system-btn:hover {
+            background-color: var(--light-green);
+            color: var(--dark-green);
+        }
+
+
+        .insta-link {
+            background: transparent;
+            border: 1px solid #ccc;
+            border-radius: 50%;
+            width: 34px;
+            height: 34px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s;
+            position: relative;
+        }
+
+
+        .insta-link:hover {
+            background-color: var(--light-green);
+            border-color: var(--light-green);
+        }
+
+
+        .instagram-icon {
+            width: 16px;
+            height: 16px;
+            object-fit: contain;
+        }
+
+
+        @media (max-width: 1024px) {
+            .card {
+                flex: 0 0 300px;
+            }
+
+
+            .startup {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+
+
+        @media (max-width: 768px) {
+            .header {
+                justify-content: space-between;
+            }
+            .logo {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .logo img {
+                width: 45px;
+            }
+            .logo-text {
+                font-size: 0.6rem;
+            }
+
+
+            .card {
+                flex: 0 0 280px;
+                padding: 20px;
+            }
+
+
+            .card h3 {
+                font-size: 1.1rem;
+            }
+
+
+            .card p {
+                font-size: 0.9rem;
+            }
+
+
+            .startup {
+                width: 100%;
+                max-width: 280px;
+            }
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+
+    <header class="header">
+        <div class="menu-container">
+            <div class="menu-icon" id="menu-icon">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
+        <div class="logo">
+            <img src="/assets/logo.png" alt="Logo do Centro de Desenvolvimento Regional">
+        </div>
+    </header>
+
+
+    <nav class="side-menu">
+        <div class="close-menu" id="close-menu">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </div>
+        <ul>
+            <li><a href="../Login/login.html" class="menu-button">Login</a></li>
+            <li><a href="/Prototipo do site/Tela inicial/index.html" class="menu-button">Home</a></li>
+            <li><a href="../Blog/blog.html" class="menu-button">Blog</a></li>
+            <li><a href="../Projeto/Projeto.html" class="menu-button">Projetos</a></li>
+            <li><a href="../Legislacao/tela.html" class="menu-button active">Legislação</a></li>
+            <li><a href="../Fale Conosco/faleconosco.html" class="menu-button">Contato</a></li>        
+        </ul>
+    </nav>
+
+
+    <!-- Seção de Editais -->
+    <section class="editais-section">
+        <h2>Editais Abertos</h2>
+        <div class="carousel">
+            <div class="arrow" id="prev">&#10094;</div>
+            <div class="cards" id="cards">
+                <div class="card">
+                    <div class="card-content">
+                        <h3>Prêmio CBMM de Ciência e Tecnologia 2025</h3>
+                        <p>Reconhecimento para pesquisadores e profissionais responsáveis por inovações tecnológicas de impacto global. Prêmio de R$ 500.000,00 para cada categoria.</p>
+                        <div class="info-container">
+                            <p class="info">
+                                <span class="info-line">Inscrições até: 25 de maio de 2025</span>
+                                <span class="info-line">Região: Brasil</span>
+                            </p>
+                        </div>
+                        <a href="https://premiocbmm.com.br/?gad_source=1&gclid=Cj0KCQjwhYS_BhD2ARIsAJTMMQYHzbLAivy1DJrdQI5EfSiRpzjJY89jSNkwAd7Di6Sb3NzQTKlo0QMaApj7EALw_wcB" class="button-link">Edital</a>
+                    </div>
+                </div>
+
+
+                <div class="card">
+                    <div class="card-content">
+                        <h3>Edital Itaú Viver Mais e Instituto +Diversidade</h3>
+                        <p>Com o propósito de estimular o poder de transformação da comunidade LGBTQIA+ no Brasil, o Itaú Unibanco, o Itaú Viver Mais e o Instituto +Diversidade lançam juntos a sétima edição do Edital LGBTI+ Orgulho, que visa fomentar o desenvolvimento de iniciativas que auxiliem e estimulem a visibilidade, segurança e respeito.</p>
+                        <div class="info-container">
+                            <p class="info">
+                                <span class="info-line">Inscrições até: 25 de maio de 2025</span>
+                                <span class="info-line">Região: Brasil</span>
+                            </p>
+                        </div>
+                        <a href="https://www.claro.com.br/institucional/patrocinios" class="button-link">Edital</a>
+                    </div>
+                </div>
+
+
+                <div class="card">
+                    <div class="card-content">
+                        <h3>BOLSA FUNARTE BRASIL</h3>
+                        <p>Participação em eventos, para os segmentos de artes visuais, circo, dança, música e teatro, com aporte total de R$ 1 milhão. Seleção de 20 bolsas para Jovens Criadores em Teatro e Dança.</p>
+                        <div class="info-container">
+                            <p class="info">
+                                <span class="info-line">Inscrições até: 25 de maio de 2025</span>
+                                <span class="info-line">Região: Brasil</span>
+                            </p>
+                        </div>
+                        <a href="https://www.gov.br/funarte/pt-br/editais-1/2025/bolsa-funarte-brasil-conexoes-internacionais-2025-temporada-cultural-brasil-franca-participacao-em-eventos" class="button-link">Edital</a>
+                    </div>
+                </div>
+
+
+                <div class="card">
+                    <div class="card-content">
+                        <h3>Banco de Projetos John Deere</h3>
+                        <p>Apoio a projetos sociais alinhados aos pilares de combate à fome, desenvolvimento comunitário e educação. Recebe propostas em fluxo contínuo.</p>
+                        <div class="info-container">
+                            <p class="info">
+                                <span class="info-line">Inscrições: Fluxo Contínuo</span>
+                                <span class="info-line">Região: Brasil</span>
+                            </p>
+                        </div>
+                        <a href="https://www.deere.com.br/pt/a-nossa-empresa/sustentabilidade/funda%C3%A7%C3%A3o-john-deere/" class="button-link">Edital</a>
+                    </div>
+                </div>
+            </div>
+            <div class="arrow" id="next">&#10095;</div>
+        </div>
+    </section>
+
+
+    <!-- Seção de Startups -->
+    <section class="startups-section">
+        <h2>Startups em Foco</h2>
+        <div class="startup-cards">
+            <div class="startup">
+                <div class="circle">1</div>
+                <p><strong>Lei nº 182, de 1º de junho de 2021</strong><br>Institui o marco legal das startups e do empreendedorismo inovador; e altera a Lei nº 6.404, de 15 de dezembro de 1976, e a Lei Complementar nº 123, de 14 de dezembro de 2006.</p>
+                <a href="https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp182.htm" class="button-link">Mais...</a>
+            </div>
+            <div class="startup">
+                <div class="circle">2</div>
+                <p><strong>Solicitar Transferência de Tecnologia</strong><br>A transferência de Propriedade Intelectual ou transferência de tecnologia de ICTs (instituições científicas e tecnológicas) é uma maneira das empresas internalizarem a inovação tecnológica em seu processo produtivo, para se manterem competitivas, agregar valor aos seus produtos/serviços e gerar riqueza.</p>
+                <a href="https://www.gov.br/pt-br/servicos/transferencia-de-propriedade-intelectual" class="button-link">Mais...</a>
+            </div>
+           
+            <div class="startup">
+                <div class="circle">3</div>
+                <p><strong>Lei de Inovação (Lei nº 10.973/2004)</strong><br>Essa lei estabelece diretrizes para a inovação no ambiente empresarial e acadêmico. Ela permite parcerias entre empresas e instituições de pesquisa, facilitando a transferência de tecnologia e o desenvolvimento de produtos inovadores.</p>
+                <a href="https://www.planalto.gov.br/ccivil_03/_Ato2004-2006/2004/Lei/L10.973.htm" class="button-link">Mais...</a>
+            </div>
+        </div>
+    </section>
+
+
+    <footer>
+        <div class="left">CDR Sul Tocantins</div>
+        <div class="center">
+            E-mail: <a href="mailto:cdrsultocantins@unitins.edu.br">cdrsultocantins@unitins.edu.br</a>
+        </div>
+        <div class="right">
+            <a href="#" class="button-link system-btn" role="button">Sistema</a>
+            <a href="https://www.instagram.com/cdrsultocantins/#" target="_blank" class="insta-link" title="Instagram CDR">
+                <img src="/assets/instaimag.png" alt="Instagram CDR" class="instagram-icon" loading="lazy">
+            </a>
+        </div>
+    </footer>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Menu lateral funcional
+            const menuIcon = document.getElementById('menu-icon');
+            const sideMenu = document.querySelector('.side-menu');
+            const closeMenuButton = document.getElementById('close-menu');
+            const body = document.body;
+
+
+            const toggleMenu = () => {
+                sideMenu.classList.toggle('active');
+                body.classList.toggle('menu-open');
+            };
+
+
+            menuIcon.addEventListener('click', toggleMenu);
+            closeMenuButton.addEventListener('click', toggleMenu);
+
+
+            document.addEventListener('click', (event) => {
+                if (!menuIcon.contains(event.target) && !sideMenu.contains(event.target)) {
+                    sideMenu.classList.remove('active');
+                    body.classList.remove('menu-open');
+                }
+            });
+
+
+            // Carrossel
+            const cards = document.getElementById('cards');
+            document.getElementById('next').addEventListener('click', () => {
+                cards.scrollBy({ left: 350, behavior: 'smooth' });
+            });
+            document.getElementById('prev').addEventListener('click', () => {
+                cards.scrollBy({ left: -350, behavior: 'smooth' });
+            });
+        });
+    </script>
+
+
+</body>
+</html>
+
