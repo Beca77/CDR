@@ -29,15 +29,8 @@ body {
 }
 
 .header::before {
-    content: '';
-    position: absolute;
-    top: -30px;
-    left: 87px;
-    width: 50px;
-    height: 50px;
-    background-color: var(--light-green);
-    border-radius: 50%;
-    z-index: -1;
+    /* movido para .menu-icon::before para garantir alinhamento com o hamburger */
+    display: none;
 }
 
 .header {
@@ -47,6 +40,20 @@ body {
 .menu-icon {
     position: relative;
     z-index: 2;
+}
+
+/* bolinha verde alinhada ao menu hamburger */
+.menu-icon::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 50px;
+    height: 50px;
+    background-color: var(--light-green);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
 }
 
 .menu-icon {
