@@ -1,32 +1,38 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projetos - CDR Sul</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <title>Projetos - Centro de Desenvolvimento Regional</title>
+
+    <!-- Agora usa o SEU CSS -->
+    <link rel="stylesheet" href="./style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Header -->
+
+    <!-- Cabeçalho com menu -->
     <header class="header">
-        <div class="menu-icon" id="menuToggle">
+        <div class="menu-icon" id="menu-icon">
             <div class="bar"></div>
             <div class="bar"></div>
             <div class="bar"></div>
         </div>
         <div class="logo">
-            <!-- Substitua pelo logo real do CDR Sul -->
-            <div style="width: 240px; height: 60px; background-color: #333; display: flex; align-items: center; justify-content: center; color: var(--light-green); font-weight: bold;">
-                CDR SUL
-            </div>
+            <img src="/assets/logo.png" alt="Logo do Centro de Desenvolvimento Regional">
         </div>
     </header>
 
-    <!-- Menu Lateral -->
-    <nav class="side-menu" id="sideMenu">
-        <div class="close-menu" id="closeMenu">
-            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Menu lateral -->
+    <nav class="side-menu">
+        <div class="close-menu" id="close-menu">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" 
+                viewBox="0 0 24 24" fill="none" stroke="currentColor" 
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
+                class="feather feather-x">
                 <line x1="18" y1="6" x2="6" y2="18"></line>
                 <line x1="6" y1="6" x2="18" y2="18"></line>
             </svg>
@@ -37,15 +43,15 @@
             <li><a href="../Blog/blog.html" class="menu-button">Blog</a></li>
             <li><span class="menu-button active">Projetos</span></li>
             <li><a href="../Legislacao/tela.html" class="menu-button">Legislação</a></li>
-            <li><a href="../Fale Conosco/faleconosco.html" class="menu-button">Contatos</a></li>
+            <li><a href="../Fale Conosco/faleconosco.html" class="menu-button">Contato</a></li>
         </ul>
     </nav>
 
-    <!-- Conteúdo Principal -->
-    <main class="main-content">
+    <!-- Conteúdo principal -->
+    <main class="content">
         <div class="page-title">
             <h1>Nossos Projetos</h1>
-            <p>Conheça as iniciativas desenvolvidas pelo CDR Sul para promover o desenvolvimento regional sustentável</p>
+            <p>Conheça as iniciativas desenvolvidas pelo CDR Sul do Tocantins para promover o desenvolvimento regional sustentável.</p>
         </div>
 
         <!-- Filtros -->
@@ -58,16 +64,15 @@
             <button class="filter-btn" data-filter="infraestrutura">Infraestrutura</button>
         </div>
 
-        <!-- Grid de Projetos -->
-        <div class="projects-grid" id="projectsContainer">
-            <!-- Os projetos serão carregados aqui via JavaScript -->
-        </div>
+        <!-- Grid de projetos -->
+        <div class="projects-grid" id="projectsContainer"></div>
 
-        <!-- Formulário de Cadastro (AGORA DEPOIS DOS PROJETOS) -->
+        <!-- Formulário de cadastro -->
         <div class="form-container" id="projectForm">
             <h2 class="form-title" id="formTitle">Cadastrar Novo Projeto</h2>
             <form id="newProjectForm">
                 <input type="hidden" id="projectId">
+
                 <div class="form-row">
                     <div class="form-group">
                         <label for="projectName">Nome do Projeto *</label>
@@ -78,7 +83,7 @@
                         <input type="text" id="projectLocation" class="form-control" required>
                     </div>
                 </div>
-                
+
                 <div class="form-row">
                     <div class="form-group">
                         <label for="projectStatus">Status *</label>
@@ -94,48 +99,33 @@
                         <input type="text" id="projectDuration" class="form-control" placeholder="Ex: 12 meses">
                     </div>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="projectDescription">Descrição *</label>
                     <textarea id="projectDescription" class="form-control" required></textarea>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="projectImage">URL da Imagem</label>
                     <input type="text" id="projectImage" class="form-control" placeholder="https://exemplo.com/imagem.jpg">
                 </div>
-                
+
                 <div class="form-group">
                     <label for="projectPartners">Parceiros</label>
                     <input type="text" id="projectPartners" class="form-control" placeholder="Empresa A, Instituição B">
                 </div>
-                
+
                 <div class="form-group">
                     <label>Categorias *</label>
                     <div class="checkbox-group">
-                        <div class="checkbox-item">
-                            <input type="checkbox" id="catAgricultura" value="agricultura">
-                            <label for="catAgricultura">Agricultura</label>
-                        </div>
-                        <div class="checkbox-item">
-                            <input type="checkbox" id="catTecnologia" value="tecnologia">
-                            <label for="catTecnologia">Tecnologia</label>
-                        </div>
-                        <div class="checkbox-item">
-                            <input type="checkbox" id="catSustentabilidade" value="sustentabilidade">
-                            <label for="catSustentabilidade">Sustentabilidade</label>
-                        </div>
-                        <div class="checkbox-item">
-                            <input type="checkbox" id="catEducacao" value="educacao">
-                            <label for="catEducacao">Educação</label>
-                        </div>
-                        <div class="checkbox-item">
-                            <input type="checkbox" id="catInfraestrutura" value="infraestrutura">
-                            <label for="catInfraestrutura">Infraestrutura</label>
-                        </div>
+                        <div class="checkbox-item"><input type="checkbox" id="catAgricultura" value="agricultura"><label for="catAgricultura">Agricultura</label></div>
+                        <div class="checkbox-item"><input type="checkbox" id="catTecnologia" value="tecnologia"><label for="catTecnologia">Tecnologia</label></div>
+                        <div class="checkbox-item"><input type="checkbox" id="catSustentabilidade" value="sustentabilidade"><label for="catSustentabilidade">Sustentabilidade</label></div>
+                        <div class="checkbox-item"><input type="checkbox" id="catEducacao" value="educacao"><label for="catEducacao">Educação</label></div>
+                        <div class="checkbox-item"><input type="checkbox" id="catInfraestrutura" value="infraestrutura"><label for="catInfraestrutura">Infraestrutura</label></div>
                     </div>
                 </div>
-                
+
                 <div class="form-actions">
                     <button type="button" class="btn-cancel" id="cancelForm">Cancelar</button>
                     <button type="submit" class="btn-submit" id="submitBtn">Cadastrar Projeto</button>
@@ -143,7 +133,7 @@
             </form>
         </div>
 
-        <!-- Botão para adicionar projeto NO FINAL DA PÁGINA -->
+        <!-- Botão de adicionar -->
         <div class="add-project-section">
             <button class="add-project-btn" id="addProjectBtn">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -155,7 +145,7 @@
         </div>
     </main>
 
-    <!-- Modal de Detalhes do Projeto -->
+    <!-- Modal de Detalhes -->
     <div class="modal" id="projectModal">
         <div class="modal-content">
             <div class="modal-header">
@@ -163,72 +153,24 @@
                 <button class="close-modal" id="closeModal">&times;</button>
             </div>
             <div class="modal-body">
-                <div class="modal-img">
-                    <img id="modalImage" src="" alt="Projeto">
-                </div>
-                <div class="modal-description" id="modalDescription">
-                    Descrição detalhada do projeto será exibida aqui.
-                </div>
+                <div class="modal-img"><img id="modalImage" src="" alt="Projeto"></div>
+                <div class="modal-description" id="modalDescription"></div>
                 <div class="modal-details">
-                    <div class="detail-item">
-                        <h4>Status</h4>
-                        <p id="modalStatus">-</p>
-                    </div>
-                    <div class="detail-item">
-                        <h4>Localização</h4>
-                        <p id="modalLocation">-</p>
-                    </div>
-                    <div class="detail-item">
-                        <h4>Duração</h4>
-                        <p id="modalDuration">-</p>
-                    </div>
-                    <div class="detail-item">
-                        <h4>Parceiros</h4>
-                        <p id="modalPartners">-</p>
-                    </div>
+                    <div class="detail-item"><h4>Status</h4><p id="modalStatus">-</p></div>
+                    <div class="detail-item"><h4>Localização</h4><p id="modalLocation">-</p></div>
+                    <div class="detail-item"><h4>Duração</h4><p id="modalDuration">-</p></div>
+                    <div class="detail-item"><h4>Parceiros</h4><p id="modalPartners">-</p></div>
                 </div>
                 <div class="project-tags" id="modalTags"></div>
             </div>
         </div>
     </div>
 
-    <!-- Footer -->
     <footer>
-        <div class="footer-content">
-            <div class="footer-about">
-                <div class="footer-logo">CDR Sul</div>
-                <p>Desenvolvendo soluções inovadoras para o Sul do Brasil.</p>
-            </div>
-            <div class="footer-links">
-                <h4>Links Rápidos</h4>
-                <ul>
-                    <li><a href="index.html">Início</a></li>
-                    <li><a href="projetos.html">Projetos</a></li>
-                    <li><a href="sobre.html">Sobre</a></li>
-                    <li><a href="contato.html">Contato</a></li>
-                </ul>
-            </div>
-            <div class="footer-links">
-                <h4>Projetos</h4>
-                <ul>
-                    <li><a href="#">Agricultura 4.0</a></li>
-                    <li><a href="#">Laboratórios de Inovação</a></li>
-                    <li><a href="#">Energia Renovável</a></li>
-                </ul>
-            </div>
-            <div class="footer-links">
-                <h4>Contato</h4>
-                <ul>
-                    <li><a href="mailto:contato@cdrsul.org">contato@cdrsul.org</a></li>
-                    <li><a href="tel:+5551999999999">(51) 99999-9999</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="copyright">
-            <p>&copy; 2023 CDR Sul. Todos os direitos reservados.</p>
-        </div>
+        <p>&copy; 2025 Centro de Desenvolvimento Regional Sul do Tocantins - Todos os direitos reservados.</p>
     </footer>
 
-    <script src="script.js"></script>
+<img src="../ativos/logo.png" alt="Logo do CDR">
+<script src="./script.js"></script>
 </body>
 </html>
